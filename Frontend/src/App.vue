@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Home from './components/Home.vue'
+import TopBar from './components/TopBar.vue'
 </script>
 
 <template>
-  <Home/>
+  <TopBar/>
 </template>
 
 <style scoped>
