@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex flex-row m-2 text-xl justify-between border-2 border-black">
+  <nav class="flex flex-row text-xl justify-between border-2 border-black">
     <div class="flex flex-row p-6 justify-between w-1/6">
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/submit">Submit</RouterLink>

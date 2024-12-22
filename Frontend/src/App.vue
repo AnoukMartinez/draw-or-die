@@ -3,7 +3,9 @@ import TopBar from './components/TopBar.vue'
 </script>
 
 <template>
-  <TopBar/>
+  <div class="p-2">
+    <TopBar/>
+  </div>
 </template>
 
 <style scoped>

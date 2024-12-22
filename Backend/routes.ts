@@ -51,9 +51,13 @@ router.post('/users/:userId/images', upload.single('file'), (req, res) => {
     res.status(200).json(`Uploaded: ${file.filename}`);
 });
 
-router.get('/users/:id/images', (req, res) => {
-    // TODO
-    res.send(req.params)
+router.get('/users/:userId/images', (req, res) => {
+    userData.forEach((user) => {
+        if(user.id ==  req.params.userId) {
+            res.status(200).json(user.images)
+        }
+    })
+    res.status(404).json('Could not find that user')
 })
 
 module.exports = router;
