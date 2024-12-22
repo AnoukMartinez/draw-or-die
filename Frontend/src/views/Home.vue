@@ -1,6 +1,26 @@
 <template>
-    <div v-for="filepath in imageFilepaths">
-        <ImageThumbnail :image-path="getImageUrl(filepath)"/>
+    <div class="text-xl mt-4">
+        October
+    </div>
+
+    <div class="border-2 border-black mt-2">
+        <div class="flex flex-row items-start">
+            <div v-for="filepath in imageFilepaths">
+                <ImageThumbnail :image-path="getImageUrl(filepath)"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-xl mt-4">
+        November
+    </div>
+
+    <div class="border-2 border-black mt-2">
+        <div class="flex flex-row items-start">
+            <div v-for="filepath in imageFilepaths">
+                <ImageThumbnail :image-path="getImageUrl(filepath)"/>
+            </div>
+        </div>
     </div>
 </template>
 

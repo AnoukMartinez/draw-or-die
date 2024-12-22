@@ -1,5 +1,7 @@
 <template>
-    <img :src="props.imagePath" class="w-1/6 mt-2">
+    <button class="border-2 border-black m-2 w-32 h-52">
+        <img :src="props.imagePath" class="object-cover h-full w-full">
+    </button> 
 </template>
 
 <script setup lang="ts">
