@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
 const storage = multer.diskStorage({
@@ -24,13 +25,23 @@ router.get('/users', function(req, res) {
 router.get('/users/:userId', function(req, res) {
     userData.forEach((user) => {
         if(user.id ==  req.params.userId) {
-            res.status(200).json({id: user.id, name: user.name})
+            res.status(200).json({id: user.id, name: user.name, images: user.images})
         }
     })
     res.status(404).json('Could not find that user')
 });
 
 // Images
+
+router.get('/images', async (req, res) => {
+    try {
+        fs.promises.readdir(uploadDirectory).then(filenames => {
+            res.status(200).json(filenames);
+        })
+    } catch {
+        res.status(500)
+    }
+})
 
 router.post('/users/:userId/images', upload.single('file'), (req, res) => {
     const file = req.file;

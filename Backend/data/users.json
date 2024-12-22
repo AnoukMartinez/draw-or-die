@@ -1,10 +1,17 @@
 [
     {
         "id": 1,
-        "name": "Nathaniel"
+        "name": "Nathaniel",
+        "images": [
+            "1.jpg",
+            "2.jpg"
+        ]
     },
     {
         "id": 2,
-        "name": "The Other Nathan"
+        "name": "The Other Nathan",
+        "images": [
+            "3.jpg"
+        ]
     }
 ]
