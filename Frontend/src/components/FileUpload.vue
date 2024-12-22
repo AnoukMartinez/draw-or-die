@@ -2,43 +2,35 @@
     <div class="border-2">
         <div class="flex flex-col">
             <label for="file">Upload a Drawing ^^</label>
-            <input type="file" id="file" name="files" multiple @change="handleFileChange" />
+            <input type="file" id="file" name="files" @change="handleFileChange" />
         </div>
         <div>
-            <button @click="submitArtwork">Submit</button>
+            <button @click="uploadArtwork(testUserId, selectedFile)">Submit</button>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { BECommImages } from '../backend_communication/images';
 
-const selectedFiles = ref<File[]>([]);
+const selectedFile = ref<File>();
+const testUserId = 1 // TODO: State Management
+const beCommImages = new BECommImages()
 
 const handleFileChange = (event: Event) => {
     const input = event.target as HTMLInputElement;
     if (input.files) {
-        selectedFiles.value = Array.from(input.files);
+        selectedFile.value = Array.from(input.files)[0];
     }
 };
 
-const submitArtwork = async () => {
-    const formData = new FormData();
-    selectedFiles.value.forEach(file => {
-        formData.append('files', file);  // Make sure to append with the correct field name
-    });
-
-    try {
-        const response = await fetch('http://localhost:3000/upload', {
-            method: 'POST',
-            body: formData,
-        });
-
-        if (!response.ok) throw new Error('Upload failed');
-        const result = await response.json();
-        console.log(result);
-    } catch (error) {
-        console.error(error);
+const uploadArtwork = async (userId: number, selectedFile: File | undefined) => {
+    if(!selectedFile) {
+        return;
     }
-};
+
+    beCommImages.uploadArtwork(userId, selectedFile)
+}
+
 </script>

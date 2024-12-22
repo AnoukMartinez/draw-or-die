@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import ProfileCalendar from '../components/ProfileCalendar.vue';
 
-const username = "Nathaniel"
+const username = "Nathaniel" // TODO Database Query
 </script>
 
 <style scoped>

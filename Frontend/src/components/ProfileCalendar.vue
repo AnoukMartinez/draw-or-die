@@ -26,7 +26,6 @@
 import { computed, ref } from 'vue';
 
 const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-const username = "Nathaniel" // TODO: Database Query
 
 const currentDate = ref(new Date());
 

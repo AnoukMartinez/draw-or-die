@@ -5,9 +5,8 @@ const path = require('path');
 
 const app = express();
 const PORT = 3000;
-const uploadDirectory = path.join(__dirname, 'images');
+const uploadDirectory = path.join(__dirname, 'data/images');
 
-// Allow CORS for all origins (or specify your frontend URL)
 app.use(cors());
 
 const storage = multer.diskStorage({
@@ -23,13 +22,18 @@ const upload = multer({ storage });
 
 app.use('/images', express.static(uploadDirectory));
 
-app.post('/upload', upload.array('files'), (req, res) => {
+app.post('/users/:userId/images', upload.array('files'), (req, res) => {
     const files = req.files;
     if (!files || files.length === 0) {
         return res.status(400).json({ message: 'No files uploaded' });
     }
     res.status(200).json({ message: 'Files uploaded successfully', filenames: files.map(file => file.filename) });
 });
+
+app.get('/users/:id/images', (req, res) => {
+
+    res.send(req.params)
+})
 
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
