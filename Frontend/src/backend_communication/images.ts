@@ -2,7 +2,7 @@ export class BECommImages {
     async uploadArtwork(userId: number, selectedFile: File) {
         const formData = new FormData();
         // "file" muss gleich mit BE body attributnamen sein
-        formData.append('files', selectedFile)
+        formData.append('file', selectedFile)
     
         try {
             const response = await fetch(`http://localhost:3000/users/${userId}/images`, {

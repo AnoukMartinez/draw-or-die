@@ -32,12 +32,12 @@ router.get('/users/:userId', function(req, res) {
 
 // Images
 
-router.post('/users/:userId/images', upload.array('files'), (req, res) => {
-    const files = req.files;
-    if (!files || files.length === 0) {
-        return res.status(400).json('No files uploaded');
+router.post('/users/:userId/images', upload.single('file'), (req, res) => {
+    const file = req.file;
+    if (!file) {
+        return res.status(400).json('No file selected');
     }
-    res.status(200).json(files.map(file => `Uploaded: ${file.filename}`));
+    res.status(200).json(`Uploaded: ${file.filename}`);
 });
 
 router.get('/users/:id/images', (req, res) => {

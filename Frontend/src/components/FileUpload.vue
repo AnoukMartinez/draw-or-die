@@ -2,7 +2,7 @@
     <div class="border-2">
         <div class="flex flex-col">
             <label for="file">Upload a Drawing ^^</label>
-            <input type="file" id="file" name="files" @change="handleFileChange" />
+            <input type="file" id="file" name="file" @change="handleFileChange" />
         </div>
         <div>
             <button @click="uploadArtwork(testUserId, selectedFile)">Submit</button>
